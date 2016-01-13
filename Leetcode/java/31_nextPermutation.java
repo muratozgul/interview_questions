@@ -19,7 +19,7 @@ class Main {
 
         Solution solution = new Solution();
 
-        int[] input = {1 , 1 ,5};
+        int[] input = {1, 2, 3};
         
         solution.nextPermutation(input);
         
@@ -38,24 +38,24 @@ class Solution {
         int i1 = nums.length-2;
         int i2 = nums.length-1;
 
-        // start from right, look for a 
-        // number smaller than the previous one
-        while(i1 >= 0 && nums[i1] >= nums[i1+1]) {
-            i1--;    
-        }
-
-        //System.out.println("i1: " + i1);
-
-        //look for the first number greater than n1
-        if(i1 >= 0) {
-            while(i2 >= 0 && nums[i2] <= nums[i1]) {
-                i2--;
+        while(i1 > -1) {
+            // start from right, look for a 
+            // number smaller than the previous one
+            if(nums[i1] < nums[i1+1]) {
+                break;
             }
+            i1--;
         }
-        
-        //System.out.println("i2: " + i2);
-        
-        if(i1 >= 0) {
+
+        while(i2 > 0) {
+            //look for the first number greater than n1  
+            if(nums[i2] > nums[i1]) {
+                break;
+            }
+            i2--;
+        }
+
+        if(i1 > -1) {
             //switch p1 and p2;
             int temp = nums[i1];
             nums[i1] = nums[i2];
